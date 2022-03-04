@@ -7,5 +7,21 @@ Note: the percent daily return = 100 * (current day - previous day)/previous day
 
 Below you are given the stock prices (there are only 4 days in this example). First convert to a numpy array. Then use slicing and numeric operations to calculate the percent daily return (no for loops!).
 """
+import numpy as np 
 
 acme = [10, 11.5, 11, 10, 12]
+ACME_array = np.array(acme)
+
+#There is no day 1 percent daily return.
+
+day2_PDR = 100 * (ACME_array[1] - ACME_array[0])/ACME_array[0]
+print(day2_PDR)
+
+day3_PDR = 100 * (ACME_array[2] - ACME_array[1])/ACME_array[1]
+print(day3_PDR)
+
+day4_PDR = 100 * (ACME_array[3] - ACME_array[2])/ACME_array[2]
+print(day4_PDR)
+
+day5_PDR =  100 * (ACME_array[4] - ACME_array[3])/ACME_array[3]
+print(day5_PDR)
