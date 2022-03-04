@@ -13,7 +13,6 @@ The data in 'wind.data' has the following format::
 The first three columns are year, month and day.  The remaining 12 columns are average windspeeds in knots at 12 cities in Ireland on that day.
    
 
-
 2. Calculate the min, max and mean windspeeds and standard deviation of the
    windspeeds in Ireland.  In other words, reduce all the wind measurements
    from all the days and all the locations to a single set of statistics 
@@ -57,29 +56,38 @@ These data were analyzed in detail in the following article:
 
 """
 
+import numpy as np
 
 """
 1. Use the <var> = np.loadtxt(<file>) to read the data into an array. Use <array>.shape to see the dimensions of the array with the data.
 """
+dataset = np.loadtxt("wind.data")
+dataset.shape = (-1, 15)
 
 
 """
 2. As stated in the introduction, the first 3 columns of the data file are the dates. The remaining columns are the wind speed data. Use array slicing to create an array containing only the wind speed data. 
 <var> = <array>[<rows>, <columns>]
 """
-
-
+sliced_set = dataset[0:6573,3:15]
+print(sliced_set)
 """
 3. Print the minimum (<array>.min()), maximum (<array.max()), mean (<array>.mean()), and standard deviation (<array>.std()), for ALL the wind speed data.)
 """
-
+print(sliced_set.min())
+print(sliced_set.max())
+print(sliced_set.mean())
+print(sliced_set.std())
 
 """
 4. As stated above, each column in the data file contains wind speed data for a different city. Print the min, max, mean, and standard deviation for each city.
 
 The min is found using <array>.min(axis=0)
 """
-
+for i in range(12):
+  print(sliced_set.min(axis=i))
+  print(sliced_set.max(axis=i))
+  print(sliced_set.mean(axis=i))
 
 """
 5. As stated above, each row in the data file contains wind speed data for each day. Print the min, max, mean, and standard deviation for each day.__doc__
