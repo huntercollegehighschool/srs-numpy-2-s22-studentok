@@ -70,10 +70,12 @@ dataset.shape = (-1, 15)
 <var> = <array>[<rows>, <columns>]
 """
 sliced_set = dataset[0:6573,3:15]
+print("\nThe following is the windspeed data.\n")
 print(sliced_set)
 """
 3. Print the minimum (<array>.min()), maximum (<array.max()), mean (<array>.mean()), and standard deviation (<array>.std()), for ALL the wind speed data.)
 """
+print("\nThe following is the minium, maximum, mean, and standard deviation for ALL data.\n")
 print(sliced_set.min())
 print(sliced_set.max())
 print(sliced_set.mean())
@@ -84,23 +86,30 @@ print(sliced_set.std())
 
 The min is found using <array>.min(axis=0)
 """
-for i in range(12):
-  print(sliced_set.min(axis=i))
-  print(sliced_set.max(axis=i))
-  print(sliced_set.mean(axis=i))
-
+print("\nThe following is the minium, maximum, mean, and standard deviation for each city's data.\n")
+print(sliced_set.min(axis=0))
+print(sliced_set.max(axis=0))
+print(sliced_set.mean(axis=0))
+print(sliced_set.std(axis=0))
 """
 5. As stated above, each row in the data file contains wind speed data for each day. Print the min, max, mean, and standard deviation for each day.__doc__
 
 The min is found using <array>.min(axis=1)
 """
-
+print("\nThe following is the minium, maximum, mean, and standard deviation for each day's data.\n")
+print(sliced_set.min(axis=1))
+print(sliced_set.max(axis=1))
+print(sliced_set.mean(axis=1))
+print(sliced_set.std(axis=1))
 
 """
 6. Use <array>.argmax(axis=1) to create an array that shows the index of the windiest city each day. Then use the following code to determine the index of the city that is the windiest most often.
 <var> = np.unique(<array>, return_counts=True)
 """
-
+print("\nThe following is an array with the index of the windiest city each day.")
+print(sliced_set.argmax(axis=1))
+#print("\nThe following is the index of the city that is windiest most often.")
+#print(np.unique(sliced_set, return_counts=True))
 
 
 """
@@ -110,7 +119,24 @@ Then create a new array containing only the rows that have March data. The follo
 <var> = <array>[<indices>]
 Finally, find the mean wind speed for all of the March data.
 """
+print("The following is the indices of the rows that contain data from March")
+march_data = sliced_set[:,1] == 3
+print(march_data)
+print("The following is the array of the rows that contain data from March")
+march_array = sliced_set[march_data]
+print(march_array)
 
 """
 BONUS: Create an array with the average wind speed for each month.
 """
+
+print("The following is the array of the average wind speed for each month.")
+month_averages = []
+for i in range(1, 12):
+  month_data = sliced_set[:,1] == i
+  month_array = sliced_set[month_data]
+  average = month_array.mean()
+  month_averages = month_averages.append(average) 
+  print(month_averages)
+month_average_array = np.array(month_averages)
+print(month_averages)
