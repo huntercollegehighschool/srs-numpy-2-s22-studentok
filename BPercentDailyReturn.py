@@ -12,16 +12,8 @@ import numpy as np
 acme = [10, 11.5, 11, 10, 12]
 ACME_array = np.array(acme)
 
-#There is no day 1 percent daily return.
+today = ACME_array[1:]
+previous = ACME_array[:4]
 
-day2_PDR = 100 * (ACME_array[1] - ACME_array[0])/ACME_array[0]
-print(day2_PDR)
-
-day3_PDR = 100 * (ACME_array[2] - ACME_array[1])/ACME_array[1]
-print(day3_PDR)
-
-day4_PDR = 100 * (ACME_array[3] - ACME_array[2])/ACME_array[2]
-print(day4_PDR)
-
-day5_PDR =  100 * (ACME_array[4] - ACME_array[3])/ACME_array[3]
-print(day5_PDR)
+pdr = 100 * (today-previous)/previous
+print(pdr)
